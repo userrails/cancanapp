@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
  belongs_to :role
  has_many :items, :dependent => :destroy
+
+ def admin?
+   self.role.name == "Admin"
+ end
 end

@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate_user!
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -19,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    # authorize! :edit, @item
   end
 
   def create

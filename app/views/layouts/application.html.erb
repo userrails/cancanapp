@@ -6,9 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body>
+  <% if current_user.present? %>
+    <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign In", "/users/sign_in" %>
+  <% end %>
 
-<%= yield %>
+    <%= render :partial => "layouts/flash" %>
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>
