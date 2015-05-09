@@ -9,12 +9,19 @@ class Ability
          can :manage, :all
        elsif user.seller?
          can :read, Item
+
+         can :edit, Item do |item|
+          item.try(:user) == user
+         end
+
          can :update, Item do |item|
           item.try(:user) == user
          end
+
          can :destroy, Item do |item|
           item.try(:user) == user
          end
+         
          can :create, Item
        elsif user.buyer? || user.regular?
          can :read, :Item

@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
  def buyer?
    self.role.name == "Buyer"
  end
+
+ def regular?
+    self.role.name == "Regular"
+ end
 end
