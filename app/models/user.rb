@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
  def admin?
    self.role.name == "Admin"
  end
+
+ def seller?
+   self.role.name == "Seller"
+ end
+
+ def buyer?
+   self.role.name == "Buyer"
+ end
 end
