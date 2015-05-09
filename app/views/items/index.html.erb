@@ -19,8 +19,13 @@
         <td><%= item.price %></td>
         <td><%= item.user.name %></td>
         <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--Also we can check the can condition to views to hide or show the links with user permission-->
+         <% if can? :update, item %>
+          <td><%= link_to 'Edit', edit_item_path(item) %></td>
+          <% end %> 
+          <% if can? :destroy, item %>
+            <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
